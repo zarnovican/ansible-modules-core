@@ -199,6 +199,11 @@ if __name__ == '__main__':
                 notice("Module complete (%s)"%os.getpid())
                 sys.exit(0)
 
+    except SystemExit:
+        e = get_exception()
+        if e.code != 0:
+            raise
+
     except Exception:
         e = get_exception()
         notice("error: %s"%(e))
